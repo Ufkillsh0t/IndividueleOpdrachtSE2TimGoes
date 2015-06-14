@@ -136,9 +136,9 @@
                 <div id="Menu" style="float: none; height: 40px; margin: 0px 0px 0px 0px; width: 967px;">
                     <ul style="width: 900px; height: 40px;">
                         <li>
-                            <asp:Button ID="btnHome" runat="server" Text="Home" Width="75" Visible="true" /></li>
+                            <asp:Button ID="btnHome" runat="server" Text="Home" Width="75" Visible="true" OnClick="btnHome_Click" /></li>
                         <li>
-                            <asp:Button ID="btnLogin" runat="server" Text="Inloggen" Width="75" Visible="true" /></li>
+                            <asp:Button ID="btnLogin" runat="server" Text="Inloggen" Width="75" Visible="true" href="Login.aspx" OnClick="btnLogin_Click"/></li>
                     </ul>
                 </div>
             </div>
