@@ -22,13 +22,13 @@ namespace IndividueleOpdrachtSE2 {
         protected global::System.Web.UI.WebControls.TextBox tbUserName;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// rfvUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUserName;
         
         /// <summary>
         /// tbEmail control.
@@ -40,22 +40,22 @@ namespace IndividueleOpdrachtSE2 {
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// rfvEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
         
         /// <summary>
-        /// RegularExpressionValidator1 control.
+        /// revEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
         
         /// <summary>
         /// tbPassword control.
@@ -67,13 +67,13 @@ namespace IndividueleOpdrachtSE2 {
         protected global::System.Web.UI.WebControls.TextBox tbPassword;
         
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// rfvPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPassword;
         
         /// <summary>
         /// tbConfirmPassword control.
@@ -85,22 +85,22 @@ namespace IndividueleOpdrachtSE2 {
         protected global::System.Web.UI.WebControls.TextBox tbConfirmPassword;
         
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// rfvConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvConfirmPassword;
         
         /// <summary>
-        /// CompareValidator1 control.
+        /// cvPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
+        protected global::System.Web.UI.WebControls.CompareValidator cvPassword;
         
         /// <summary>
         /// btRegister control.
@@ -110,5 +110,17 @@ namespace IndividueleOpdrachtSE2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btRegister;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new IndividueleOpdrachtSE2.Site Master {
+            get {
+                return ((IndividueleOpdrachtSE2.Site)(base.Master));
+            }
+        }
     }
 }

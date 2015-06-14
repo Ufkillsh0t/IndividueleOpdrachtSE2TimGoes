@@ -9,6 +9,8 @@ namespace IndividueleOpdrachtSE2
 {
     public partial class Site : System.Web.UI.MasterPage
     {
+        //protected LoginSysteem login;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
