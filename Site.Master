@@ -124,6 +124,25 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div id="MenuWrapper" style="float: none; height: 150px;">
+            <div id="LogoWrapper" style="float: left; height: 150px; width: 575px;">
+                <div id="Logo" style="float: none; height: 110px; width: 575px;">
+
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+
+                </div>
+
+                <div id="Menu" style="float: none; height: 40px; margin: 0px 0px 0px 0px; width: 967px;">
+                    <ul style="width: 900px; height: 40px;">
+                        <li>
+                            <asp:Button ID="btnHome" runat="server" Text="Home" Width="75" Visible="true" /></li>
+                        <li>
+                            <asp:Button ID="btnLogin" runat="server" Text="Inloggen" Width="75" Visible="true" /></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
