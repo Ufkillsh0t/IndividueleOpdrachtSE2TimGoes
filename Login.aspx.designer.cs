@@ -13,6 +13,15 @@ namespace IndividueleOpdrachtSE2 {
     public partial class WebForm2 {
         
         /// <summary>
+        /// hlkRegister control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkRegister;
+        
+        /// <summary>
         /// tbInlogGebruikersnaam control.
         /// </summary>
         /// <remarks>

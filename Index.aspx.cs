@@ -11,7 +11,12 @@ namespace IndividueleOpdrachtSE2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["New"] != null)
+            {
+                lblWelkom.Visible = true;
+                lblIndexGebruikersnaam.Visible = true;
+                lblIndexGebruikersnaam.Text += Session["New"].ToString();
+            }
         }
     }
 }

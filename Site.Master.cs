@@ -13,7 +13,10 @@ namespace IndividueleOpdrachtSE2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["New"] != null)
+            {
+                btLoguit.Visible = true;
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -23,6 +26,12 @@ namespace IndividueleOpdrachtSE2
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Index.aspx");
+        }
+
+        protected void btLoguit_Click(object sender, EventArgs e)
+        {
+            Session["New"] = null;
             Response.Redirect("Index.aspx");
         }
     }

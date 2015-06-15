@@ -28,6 +28,7 @@ namespace IndividueleOpdrachtSE2
                 }
                 else
                 {
+                    Session["New"] = tbInlogGebruikersnaam.Text;
                     Response.Redirect("Index.aspx");
                 }
             }

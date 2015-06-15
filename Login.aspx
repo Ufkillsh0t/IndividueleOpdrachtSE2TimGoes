@@ -15,12 +15,19 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table class="auto-style1">
         <tr>
+            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style3">
+                <asp:HyperLink ID="hlkRegister" runat="server" NavigateUrl="~/Register.aspx">Registreren</asp:HyperLink>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
             <td class="auto-style2">Gebruikersnaam</td>
             <td class="auto-style3">
                 <asp:TextBox ID="tbInlogGebruikersnaam" runat="server" Width="180px"></asp:TextBox>
             </td>
             <td>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbInlogGebruikersnaam" ErrorMessage="RequiredFieldValidator" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbInlogGebruikersnaam" ErrorMessage="U moet een gebruikersnaam invullen!" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -29,7 +36,7 @@
                 <asp:TextBox ID="tbInlogWachtwoord" runat="server" TextMode="Password" Width="180px"></asp:TextBox>
             </td>
             <td>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbInlogWachtwoord" ErrorMessage="RequiredFieldValidator" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbInlogWachtwoord" ErrorMessage="Een wachtwoord moet ingevuld worden!" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
