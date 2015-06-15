@@ -25,7 +25,7 @@
             <asp:TextBox ID="tbUserName" runat="server" Width="180px"></asp:TextBox>
         </td>
         <td>
-            <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="tbUserName" ErrorMessage="User Name is required!" ForeColor="Red"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="tbUserName" ErrorMessage="Gebruikersnaam is vereist!" ForeColor="Red"></asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -34,9 +34,9 @@
             <asp:TextBox ID="tbEmail" runat="server" Width="180px"></asp:TextBox>
         </td>
         <td>
-            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="tbEmail" ErrorMessage="E-mail is required!" ForeColor="Red"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="tbEmail" ErrorMessage="Email is vereist!" ForeColor="Red"></asp:RequiredFieldValidator>
             <br />
-            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="tbEmail" ErrorMessage="You must enter a valid Email address!" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="tbEmail" ErrorMessage="U moet een geldig email adres invullen!" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
         </td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@
             <asp:TextBox ID="tbPassword" runat="server" TextMode="Password" Width="180px"></asp:TextBox>
         </td>
         <td>
-            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="tbPassword" ErrorMessage="A password is required!" ForeColor="Red"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="tbPassword" ErrorMessage="Een wachtwoord is vereist!" ForeColor="Red"></asp:RequiredFieldValidator>
             <br />
         </td>
     </tr>
@@ -55,9 +55,9 @@
             <asp:TextBox ID="tbConfirmPassword" runat="server" TextMode="Password" Width="180px"></asp:TextBox>
         </td>
         <td>
-            <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ControlToValidate="tbConfirmPassword" ErrorMessage="Confirm Password is required!" ForeColor="Red"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ControlToValidate="tbConfirmPassword" ErrorMessage="U moet het wachtwoord bevestigen!" ForeColor="Red"></asp:RequiredFieldValidator>
             <br />
-            <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="tbPassword" ControlToValidate="tbConfirmPassword" ErrorMessage="Both passwords must be the same!" ForeColor="Red"></asp:CompareValidator>
+            <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="tbPassword" ControlToValidate="tbConfirmPassword" ErrorMessage="De wachtwoorden moeten gelijk aan elkaar zijn!" ForeColor="Red"></asp:CompareValidator>
         </td>
     </tr>
     <tr>

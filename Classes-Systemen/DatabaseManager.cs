@@ -145,6 +145,10 @@ namespace IndividueleOpdrachtSE2
             }
         }
 
+        /// <summary>
+        /// Verkrijgt een nieuw gebruikers ID, zodat een nieuwe gebruiker in de database kan worden geplaatst.
+        /// </summary>
+        /// <returns></returns>
         public int VerkrijgNieuwGebruikerID()
         {
             try
@@ -162,6 +166,32 @@ namespace IndividueleOpdrachtSE2
             catch
             {
                 return -1;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        public string VerkrijgWachtwoord(string gebruikersnaam)
+        {
+            try
+            {
+                string sql = "SELECT WACHTWOORD FROM GEBRUIKER WHERE GEBRUIKERSNAAM = :GEBRUIKERSNAAM";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":GEBRUIKERSNAAM", gebruikersnaam);
+
+                string text = command.CommandText;
+
+                OracleDataReader reader = VoerQueryUit(command);
+
+                return reader["WACHTWOORD"].ToString();
+            }
+            catch
+            {
+                return null;
             }
             finally
             {
