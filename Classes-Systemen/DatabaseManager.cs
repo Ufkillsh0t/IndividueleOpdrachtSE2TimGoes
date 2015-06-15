@@ -87,6 +87,11 @@ namespace IndividueleOpdrachtSE2
             }
         }
 
+        /// <summary>
+        /// Voert een Delete, Update of Insert query uit op de database.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         public bool VoerNonQueryUit(OracleCommand command)
         {
             try
@@ -105,11 +110,46 @@ namespace IndividueleOpdrachtSE2
             }
         }
 
-        public bool RegistreerGebruiker(string naam, string email, string wachtwoord)
+        /// <summary>
+        /// Registreert een gebruiker in de database.
+        /// </summary>
+        /// <param name="naam"></param>
+        /// <param name="wachtwoord"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public bool RegistreerGebruiker(string naam, string wachtwoord, string email)
         {
             try
             {
-                string sql = "SELECT GEBRUIKERSNAAM FROM GEBRUIKER";
+                string sql = "INSERT INTO GEBRUIKER (ID, GEBRUIKERSNAAM, WACHTWOORD, EMAIL, REGISTRATIEDATUM) VALUES (:ID, :GEBRUIKERSNAAM, :WACHTWOORD, :EMAIL, :REGISTRATIEDATUM)";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", VerkrijgNieuwGebruikerID());
+                command.Parameters.Add(":GEBRUIKERSNAAM", naam);
+                command.Parameters.Add(":WACHTWOORD", wachtwoord);
+                command.Parameters.Add(":EMAIL", email);
+                command.Parameters.Add(":REGISTRATIEDATUM", DateTime.Now);
+
+                VoerNonQueryUit(command);
+                
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        public int VerkrijgNieuwGebruikerID()
+        {
+            try
+            {
+                string sql = "SELECT MAX(ID) AS ID FROM GEBRUIKER";
 
                 OracleCommand command = MaakOracleCommand(sql);
 
@@ -117,13 +157,11 @@ namespace IndividueleOpdrachtSE2
 
                 OracleDataReader reader = VoerQueryUit(command);
 
-                string test = reader["GEBRUIKERSNAAM"].ToString();
-
-                return false;
+                return Convert.ToInt32(reader["ID"].ToString()) + 1;
             }
             catch
             {
-                return false;
+                return -1;
             }
             finally
             {
