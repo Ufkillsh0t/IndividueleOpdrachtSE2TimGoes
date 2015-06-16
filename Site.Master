@@ -201,13 +201,39 @@
         #nav ul li a:hover {
             color: #EBF0F2;
         }
+
+        /* Inlog*/
+        #Inlog input[type="submit"] {
+            background-color: #428bca;
+            border-color: #357ebd;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 6px 12px;
+            margin: 3px 0px;
+            float: left;
+        }
+
+        #Inlog input[type="submit"]:hover {
+            background-color: #3071a9;
+            border-color: #285e8e;
+            color: #fff;
+            float: left;
+        }
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Button ID="btLogInUit" runat="server" OnClick="btLogInUit_Click" Text="Login" CausesValidation="False"/>
+        <div id="Inlog">
+            <asp:Button ID="btLogInUit" runat="server" OnClick="btLogInUit_Click" Text="Login" CausesValidation="False"/>
+            <asp:Label ID="lblGebruikersnaam" runat="server"></asp:Label>
+        </div>
         <div id="nav">
             <ul>
                 <li><a href="Index.aspx">Home</a></li>
