@@ -15,24 +15,25 @@ namespace IndividueleOpdrachtSE2
         {
             if (Session["New"] != null)
             {
-                btLoguit.Visible = true;
+                btLogInUit.Text = "Loguit";
+            }
+            else
+            {
+                btLogInUit.Text = "Login";
             }
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+        protected void btLogInUit_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
-        }
-
-        protected void btnHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Index.aspx");
-        }
-
-        protected void btLoguit_Click(object sender, EventArgs e)
-        {
-            Session["New"] = null;
-            Response.Redirect("Index.aspx");
+            if (Session["New"] != null)
+            {
+                Session["New"] = null;
+                Response.Redirect("Index.aspx");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }
