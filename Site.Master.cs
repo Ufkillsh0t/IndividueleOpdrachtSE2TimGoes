@@ -13,7 +13,7 @@ namespace IndividueleOpdrachtSE2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["New"] != null)
+            if (Session["Inlog"] != null)
             {
                 btLogInUit.Text = "Loguit";
             }
@@ -25,9 +25,9 @@ namespace IndividueleOpdrachtSE2
 
         protected void btLogInUit_Click(object sender, EventArgs e)
         {
-            if (Session["New"] != null)
+            if (Session["Inlog"] != null)
             {
-                Session["New"] = null;
+                Session["Inlog"] = null;
                 Response.Redirect("Index.aspx");
             }
             else

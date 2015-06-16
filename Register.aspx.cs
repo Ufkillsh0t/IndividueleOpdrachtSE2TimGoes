@@ -14,6 +14,11 @@ namespace IndividueleOpdrachtSE2
         protected void Page_Load(object sender, EventArgs e)
         {
             Login = new LoginSysteem();
+            if (Session["Inlog"] != null)
+            {
+                Response.Redirect("Index.aspx");
+                Response.Write("U hebt zich al geregistreerd!");
+            }
         }
 
         protected void btRegister_Click(object sender, EventArgs e)

@@ -14,6 +14,11 @@ namespace IndividueleOpdrachtSE2
         protected void Page_Load(object sender, EventArgs e)
         {
             Login = new LoginSysteem();
+            if (Session["Inlog"] != null)
+            {
+                Response.Redirect("Index.aspx");
+                Response.Write("U bent al ingelogd, log eerst uit wil je opnieuw kunnen inloggen.");
+            }
         }
 
         protected void btLogin_Click(object sender, EventArgs e)
@@ -28,7 +33,7 @@ namespace IndividueleOpdrachtSE2
                 }
                 else
                 {
-                    Session["New"] = tbInlogGebruikersnaam.Text;
+                    Session["Inlog"] = tbInlogGebruikersnaam.Text;
                     Response.Redirect("Index.aspx");
                 }
             }
