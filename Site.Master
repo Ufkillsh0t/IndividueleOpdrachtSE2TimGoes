@@ -237,7 +237,9 @@
         <div id="nav">
             <ul>
                 <li><a href="Index.aspx">Home</a></li>
-                <li><a href="Login.aspx">Login</a></li>
+                <li><a href="Product.aspx">Product</a></li>
+                <li><a href="Shop.aspx">Shop</a></li>
+                <li><a href="Wensenlijst.aspx">Wensenlijst</a></li>
             </ul>
         </div>
         <br />
