@@ -31,6 +31,33 @@ namespace IndividueleOpdrachtSE2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductInformatie;
         
         /// <summary>
+        /// Tabs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Tabs;
+        
+        /// <summary>
+        /// btnSpecificaties control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSpecificaties;
+        
+        /// <summary>
+        /// btnPrijzen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPrijzen;
+        
+        /// <summary>
         /// ProductSpecificaties control.
         /// </summary>
         /// <remarks>
