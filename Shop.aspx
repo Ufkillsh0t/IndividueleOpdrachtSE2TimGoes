@@ -12,4 +12,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="ShopInformatie" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
     </div>
+
+    <div id="AfhaalpuntInformatie" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
+    </div>
 </asp:Content>

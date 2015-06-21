@@ -16,7 +16,15 @@ namespace IndividueleOpdrachtSE2
             if (nr != null)
             {
                 shop = VerkrijgShop(Convert.ToInt32(nr));
-                GenereerAlgemeneShopInformatie();
+                if (shop != null)
+                {
+                    GenereerAlgemeneShopInformatie();
+                    GenereerAfhaalpuntInformatie();
+                }
+                else
+                {
+                    ShopInformatie.InnerHtml = "<H2>De gegeven shop bestaat niet, zoek naar een nieuwe in het shoptab!</H2>";
+                }
             }
             else
             {
@@ -39,6 +47,61 @@ namespace IndividueleOpdrachtSE2
             html = html + "<tr><td>Website</td><td><a href=\"" + shop.Website + "\">" + shop.Website + "</a></td></tr></table></div><br />"; //laatste rij
 
             ShopInformatie.InnerHtml = html;
+        }
+
+        private void GenereerAfhaalpuntInformatie()
+        {
+            //AfhaalpuntInformatie
+            if (shop.Afhaalpunten != null && shop.Afhaalpunten.Count != 0)
+            {
+                string innerHTML = "<h1>Afhaalpunten</h1><br /><div id=\"Afhaalpunten\" style=\"overflow:auto;\">";
+
+                foreach (Afhaalpunt a in shop.Afhaalpunten)
+                {
+                    innerHTML = innerHTML + GenereerAfhaalpuntTabel(a) + "<br />";
+                }
+
+                AfhaalpuntInformatie.InnerHtml = innerHTML + "</div>";
+            }
+            else
+            {
+                AfhaalpuntInformatie.InnerHtml = "<B>Deze shop heeft op dit moment nog geen afhaalpunten!</B>";
+            }
+        }
+
+        private string GenereerAfhaalpuntTabel(Afhaalpunt a)
+        {
+            string html = "<div id=\"Afhaalpunt" + a.ID + "\" style=\"border:1px solid #000000;border-radius:10px;width:900px;\">" + "<table>";
+
+            //html voor kolombreedte van de tabel.
+            html = html + "<colgroup><col style=\"width:200px;\"><col style=\"width:300px;\"><col style=\"width:200px;\"><col style=\"width:300px;\"></colgroup>";
+
+            //tableheader met een breedte van de hele colspan.
+            html = html + "<th colspan=\"4\">" + a.Plaats + " " + a.Adres + "</th>";
+
+            html = html + "<tr><td>Straat HuisNR</td><td>" + a.Adres + "</td></tr>";
+            html = html + "<tr><td>Postcode</td><td>" + a.Postcode + "</td></tr>";
+            html = html + "<tr><td>Plaats</td><td>" + a.Plaats + "</td></tr>";
+            html = html + "<tr><td>Email</td><td>" + a.Email + "</td></tr>";
+            html = html + "<tr><td>TelefoonNR</td><td>" + a.TelefoonNR + "</td></tr></table><table>";
+
+            html = html + "<colgroup><col style=\"width:200px;\"><col style=\"width:300px;\"><col style=\"width:200px;\"><col style=\"width:300px;\"></colgroup>";
+
+            //tableheader met een breedte van de hele colspan.
+            html = html + "<th colspan=\"4\">Openingstijden " + a.Plaats + " " + a.Adres + "</th>"; 
+           
+            foreach (Openingstijd o in a.Openingstijden)
+            {
+                html = html + "<tr><td>";
+                html = html + o.Dag;
+                html = html + "</td><td>";
+                html = html + o.Open + " - " + o.Sluit;
+                html = html + "</td></tr>";
+            }
+
+            html = html + "</table></div>"; //</td></tr>
+
+            return html;
         }
 
         private Shop VerkrijgShop(int shopNR)

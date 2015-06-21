@@ -16,7 +16,7 @@ namespace IndividueleOpdrachtSE2
             if (Session["Inlog"] != null)
             {
                 btLogInUit.Text = "Loguit";
-                lblGebruikersnaam.Text += Session["Inlog"].ToString();
+                lblGebruikersnaam.Text = Session["Inlog"].ToString();
             }
             else
             {
