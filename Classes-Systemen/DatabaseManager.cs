@@ -271,5 +271,41 @@ namespace IndividueleOpdrachtSE2
                 Verbinding.Close();
             }
         }
+
+        public List<Productgroep> VerkrijgProductGroepen(Categorie cat)
+        {
+            try
+            {
+                string sql = "SELECT ID, NAAM, PLAATJE FROM PRODUCTGROEP WHERE CATEGORIE_ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", cat.ID);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Productgroep> productGroepen = new List<Productgroep>();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string naam = reader["NAAM"].ToString();
+                    string plaatje = reader["PLAATJE"].ToString();
+
+                    productGroepen.Add(new Productgroep(id, naam, plaatje));
+                }
+
+                return productGroepen;
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
     }
 }

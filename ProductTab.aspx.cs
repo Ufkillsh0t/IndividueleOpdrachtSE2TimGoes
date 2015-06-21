@@ -25,20 +25,6 @@ namespace IndividueleOpdrachtSE2
                 hoofdCategorieen = VerkrijgHoofdCats();
                 VulHoofdMenuItems();
 
-                Main = new MenuItem("Main");
-                Child1 = new MenuItem("Child");
-                Child2 = new MenuItem("Child");
-
-                Child1 = ChildChilds(Child1);
-                Child2 = ChildChilds(Child2);
-
-                Main.ChildItems.Add(Child1);
-                Main.ChildItems.Add(Child2);
-
-                ProductCatMenu.Items.Add(Main);
-                ProductCatMenu.Items.Add(new MenuItem("Main1"));
-                ProductCatMenu.Items.Add(new MenuItem("Main2"));
-
                 foreach (MenuItem m in hoofdMenuItems)
                 {
                     ProductCatMenu.Items.Add(m);
@@ -66,9 +52,25 @@ namespace IndividueleOpdrachtSE2
         {
             foreach (Categorie c in cats)
             {
-                menu.ChildItems.Add(new MenuItem(c.Naam));
+                MenuItem subCat = ProductGroepMenuItems(VerkrijgProductGroepen(c), new MenuItem(c.Naam));
+                menu.ChildItems.Add(subCat);
             }
             return menu;
+        }
+
+        private MenuItem ProductGroepMenuItems(List<Productgroep> producGroepen, MenuItem menu)
+        {
+            foreach (Productgroep p in producGroepen)
+            {
+                menu.ChildItems.Add(new MenuItem(p.Naam));
+            }
+            return menu;
+        }
+
+        private List<Productgroep> VerkrijgProductGroepen(Categorie cat)
+        {
+            DatabaseManager dm = new DatabaseManager();
+            return dm.VerkrijgProductGroepen(cat);
         }
 
         private List<Categorie> VerkrijgSubCats(Categorie cat)
@@ -81,16 +83,6 @@ namespace IndividueleOpdrachtSE2
         {
             DatabaseManager dm = new DatabaseManager();
             return dm.VerkrijgHoofdCategorieen();
-        }
-
-        private MenuItem ChildChilds(MenuItem menuItem)
-        {
-            MenuItem UpdatedChilds = menuItem;
-            foreach (string i in child)
-            {
-                UpdatedChilds.ChildItems.Add(new MenuItem(i));
-            }
-            return UpdatedChilds;
         }
     }
 }
