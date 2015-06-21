@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Menu ID="ProductCatMenu" runat="server" RenderingMode="Table">
-    </asp:Menu>
+    <div id="CatMenu" style="width:900px;margin-left:auto;margin-right:auto;">
+        <asp:Menu ID="ProductCatMenu" runat="server" RenderingMode="Table">
+        </asp:Menu>
+    </div>
 </asp:Content>

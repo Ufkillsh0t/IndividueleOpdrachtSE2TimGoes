@@ -9,10 +9,6 @@ namespace IndividueleOpdrachtSE2
 {
     public partial class WebForm7 : System.Web.UI.Page
     {
-        private MenuItem Main;
-        private MenuItem Child1;
-        private MenuItem Child2;
-
         private List<Categorie> hoofdCategorieen;
         private List<MenuItem> hoofdMenuItems;
 
