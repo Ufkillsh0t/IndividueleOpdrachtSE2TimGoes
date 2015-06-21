@@ -87,8 +87,12 @@
     <Compile Include="Classes-Systemen\DatabaseManager.cs" />
     <Compile Include="Classes-Systemen\ProductEtc\Product.cs" />
     <Compile Include="Classes-Systemen\ProductEtc\Productgroep.cs" />
+    <Compile Include="Classes-Systemen\ProductEtc\ProductShop.cs" />
     <Compile Include="Classes-Systemen\ProductEtc\Specificatie.cs" />
     <Compile Include="Classes-Systemen\ProductEtc\Specificatiesoort.cs" />
+    <Compile Include="Classes-Systemen\Shop\Afhaalpunt.cs" />
+    <Compile Include="Classes-Systemen\Shop\Openingstijd.cs" />
+    <Compile Include="Classes-Systemen\Shop\Shop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

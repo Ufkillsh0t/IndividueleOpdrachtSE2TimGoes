@@ -35,11 +35,14 @@
             <asp:Button ID="btnSpecificaties" runat="server" Text="Specificaties" OnClick="btnSpecificaties_Click" />
         </div>
         <div id="btnPlacement2" style="float: left; margin-left:10px;">
-            <asp:Button ID="btnPrijzen" runat="server" Text="Button" OnClick="btnPrijzen_Click" />
+            <asp:Button ID="btnPrijzen" runat="server" Text="Prijzen/Shops" OnClick="btnPrijzen_Click" />
         </div>
     </div>
     <br />
 
-    <div id="ProductSpecificaties" runat="server" style="width: 1200px; margin-top:50px; margin-left: auto; margin-right: auto;overflow:auto;" >
+    <div id ="ProductPrijsShops" runat="server" style="width: 1200px; margin-top:50px; margin-left: auto; margin-right: auto; overflow:auto;">
+    </div>
+
+    <div id="ProductSpecificaties" runat="server" style="width: 1200px; margin-top:50px; margin-left: auto; margin-right: auto; overflow:auto;" >
     </div>
 </asp:Content>

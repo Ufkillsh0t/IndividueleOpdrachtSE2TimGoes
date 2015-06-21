@@ -545,5 +545,47 @@ namespace IndividueleOpdrachtSE2
                 Verbinding.Close();
             }
         }
+
+        public List<ProductShop> VerkrijgProductShops(Product p)
+        {
+            try
+            {
+                string sql = "SELECT s.SHOPNAAM, s.RATING, ps.VOORRAAD, ps.PRIJS, ps.TOTAALPRIJS, s.NR"
+                           + " FROM PRODUCTSHOP ps, PRODUCT p, SHOP s"
+                           + " WHERE ps.SHOP_NR = s.NR"
+                           + " AND p.ID = ps.PRODUCT_ID"
+                           + " AND p.ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", p.ID);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<ProductShop> productShops = new List<ProductShop>();
+
+                while (reader.Read())
+                {
+                    string shopNaam = reader["SHOPNAAM"].ToString();
+                    int rating = Convert.ToInt32(reader["RATING"]);
+                    string voorraad = reader["VOORRAAD"].ToString();
+                    int prijs = Convert.ToInt32(reader["PRIJS"]);
+                    int totaalPrijs = Convert.ToInt32(reader["TOTAALPRIJS"]);
+                    int shopNR = Convert.ToInt32(reader["NR"]);
+
+                    productShops.Add(new ProductShop(p, voorraad, new Shop(shopNR, shopNaam, rating), prijs, totaalPrijs));
+                }
+
+                return productShops;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
     }
 }

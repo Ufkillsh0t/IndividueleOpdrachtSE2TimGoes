@@ -11,37 +11,85 @@ namespace IndividueleOpdrachtSE2
     {
         private Product prod;
         private List<Specificatiesoort> specificatieSoorten;
+        private List<ProductShop> productShop;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             string productID = Request.QueryString["id"];
             if (productID != null)
             {
+                ProductSpecificaties.Visible = false;
+                ProductPrijsShops.Visible = false;
                 prod = VerkijgProduct(Convert.ToInt32(productID));
+                productShop = VerkrijgProductShops(prod);
                 ProductTabs.InnerHtml = "<a href=\"ProductTab.aspx\">ProductTab</a>" + "<a href=\"ProductGroep.aspx?id=" + prod.ProductGroep.ID.ToString() + "\" style=\"margin-left:20px;\">" + prod.ProductGroep.Naam + "</a>";
                 GenereerAlgemeneProductInformatie();
                 GenereerTabelSpecificaties();
+                GenereerProductShopTabel();
             }
             else
             {
                 ProductTabs.InnerHtml = "<a href=\"ProductTab.aspx\">ProductTab</a>";
+                ProductInformatie.InnerHtml = "<h2>Er kon geen product worden gevonden!</h2>";
             }
         }
 
         protected void btnPrijzen_Click(object sender, EventArgs e)
         {
-
+            ProductSpecificaties.Visible = false;
+            ProductPrijsShops.Visible = true;
         }
 
         protected void btnSpecificaties_Click(object sender, EventArgs e)
         {
-
+            ProductSpecificaties.Visible = true;
+            ProductPrijsShops.Visible = false;
         }
 
         private Product VerkijgProduct(int productID)
         {
             DatabaseManager dm = new DatabaseManager();
             return dm.VerkrijgProduct(productID);
+        }
+
+        private List<ProductShop> VerkrijgProductShops(Product p)
+        {
+            DatabaseManager dm = new DatabaseManager();
+            return dm.VerkrijgProductShops(p);
+        }
+
+        private void GenereerProductShopTabel()
+        {
+            if (productShop != null && productShop.Count != 0)
+            {
+                ProductPrijsShops.InnerHtml = ProductShopTabel();
+            }
+            else
+            {
+                ProductPrijsShops.InnerHtml = "<B>Dit product wordt momenteel nergens aangeboden!</B>";
+            }
+        }
+
+        private string ProductShopTabel()
+        {
+            string html = "<div id=\"ShopPrijzen\" style=\"border:1px solid #000000;border-radius:10px;width:600px;\">"; //div benaming en stijl
+            html = html + "<colgroup><col style=\"width:300px;\"><col style=\"width:100px;\"><col style=\"width:200px;\"><col style=\"width:200px;\"><col style=\"width:200px;\"><col style=\"width:100px;\"></colgroup>"; //tabel breedte per kolom
+            html = html + "<table><th colspan=\"6\">Prijzen/Shops</th>";
+            html = html + "<tr><td style=\"width:300px;\">ShopNaam</td><td style=\"width:100px;\">Rating</td><td style=\"width:200px;\">Voorraad</td><td style=\"width:200px;\">Prijs</td><td style=\"width:200px;\">Prijs (inc Verzending)</td><td style=\"width:100px;\">ShopNR</td></tr>";
+
+            foreach (ProductShop ps in productShop)
+            {
+                html = html + "<tr><td>" + ps.Shop.Naam + "</td>";
+                html = html + "<td>" + ps.Shop.Rating + "</td>";
+                html = html + "<td>" + ps.Voorraad + "</td>";
+                html = html + "<td>" + ps.Prijs + "</td>";
+                html = html + "<td>" + ps.TotaalPrijs + "</td>";
+                html = html + "<td><a href=\"Shop.aspx?nr=" + ps.Shop.ShopNR + "\">" + ps.Shop.ShopNR +  "</a></td></tr>";
+            }
+
+            html = html + "</table></div>";
+
+            return html;
         }
 
         private void GenereerAlgemeneProductInformatie()
