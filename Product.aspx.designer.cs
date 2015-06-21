@@ -13,6 +13,24 @@ namespace IndividueleOpdrachtSE2 {
     public partial class WebForm4 {
         
         /// <summary>
+        /// ProductTabs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductTabs;
+        
+        /// <summary>
+        /// ProductInformatie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductInformatie;
+        
+        /// <summary>
         /// ProductSpecificaties control.
         /// </summary>
         /// <remarks>

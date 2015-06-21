@@ -506,13 +506,13 @@ namespace IndividueleOpdrachtSE2
             try
             {
                 string sql = "SELECT ss.ID AS SPECIFICATIESOORT_ID, ss.NAAM AS SPECIFICATIESOORT, s.ID AS SPECIFICATIE_ID, s.NAAM AS SPECIFICATIE, s.OMSCHRIJVING AS OMSCHRIJVING, ps.WAARDE AS WAARDE"
-                           + "FROM PRODUCT p, PRODUCTSPECIFICATIE ps"
-                           + "INNER JOIN SPECIFICATIE s"
-                           + "ON s.ID = ps.SPECIFICATIE_ID"
-                           + "INNER JOIN SPECIFICATIESOORT ss"
-                           + "ON ss.ID = s.SPECIFICATIESOORT_ID"
-                           + "WHERE ps.PRODUCT_ID = p.ID"
-                           + "AND p.ID = :ID;";
+                           + " FROM PRODUCT p, PRODUCTSPECIFICATIE ps"
+                           + " INNER JOIN SPECIFICATIE s"
+                           + " ON s.ID = ps.SPECIFICATIE_ID"
+                           + " INNER JOIN SPECIFICATIESOORT ss"
+                           + " ON ss.ID = s.SPECIFICATIESOORT_ID"
+                           + " WHERE ps.PRODUCT_ID = p.ID"
+                           + " AND p.ID = :ID";
 
                 OracleCommand command = MaakOracleCommand(sql);
 
