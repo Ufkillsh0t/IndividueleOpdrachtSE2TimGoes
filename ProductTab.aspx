@@ -2,6 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Menu ID="ProductCatMenu" runat="server">
+    <asp:Menu ID="ProductCatMenu" runat="server" RenderingMode="Table">
     </asp:Menu>
 </asp:Content>

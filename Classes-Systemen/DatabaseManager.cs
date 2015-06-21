@@ -173,6 +173,11 @@ namespace IndividueleOpdrachtSE2
             }
         }
 
+        /// <summary>
+        /// Verkrijgt het HashWachtwoord van een account.
+        /// </summary>
+        /// <param name="gebruikersnaam"></param>
+        /// <returns></returns>
         public string VerkrijgWachtwoord(string gebruikersnaam)
         {
             try
@@ -188,6 +193,74 @@ namespace IndividueleOpdrachtSE2
                 OracleDataReader reader = VoerQueryUit(command);
 
                 return reader["WACHTWOORD"].ToString();
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        public List<Categorie> VerkrijgHoofdCategorieen()
+        {
+            try
+            {
+                string sql = "SELECT ID, NAAM FROM CATEGORIE WHERE CAT_ID IS NULL";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Categorie> hoodCategorieen = new List<Categorie>();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string naam = reader["NAAM"].ToString();
+
+                    hoodCategorieen.Add(new Categorie(id, naam));
+                }
+
+                return hoodCategorieen;
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        public List<Categorie> VerkrijgSubCategorieen(Categorie cat)
+        {
+            try
+            {
+                string sql = "SELECT ID, NAAM FROM CATEGORIE WHERE CAT_ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", cat.ID);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Categorie> hoodCategorieen = new List<Categorie>();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string naam = reader["NAAM"].ToString();
+
+                    hoodCategorieen.Add(new Categorie(id, cat, naam));
+                }
+
+                return hoodCategorieen;
+
             }
             catch
             {

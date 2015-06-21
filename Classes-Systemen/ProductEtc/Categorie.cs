@@ -13,6 +13,12 @@ namespace IndividueleOpdrachtSE2
 
         public string Naam { get; set; }
 
+        public Categorie(int id, string naam)
+        {
+            this.ID = id;
+            this.Naam = naam;
+        }
+
         public Categorie(int id, Categorie hoofdCategorie, string naam)
         {
             this.ID = id;
