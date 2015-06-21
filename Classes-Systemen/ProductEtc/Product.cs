@@ -46,6 +46,14 @@ namespace IndividueleOpdrachtSE2
             this.TestDatum = TestDatum;
             this.Plaatje = plaatje;
             this.FabrikantSite = fabrikantSite;
+
+            this.Specificaties = VerkrijgSpecificaties();
+        }
+
+        private List<Specificatie> VerkrijgSpecificaties()
+        {
+            DatabaseManager dm = new DatabaseManager();
+            return dm.VerkrijgSpecificaties(this.ID);
         }
     }
 }

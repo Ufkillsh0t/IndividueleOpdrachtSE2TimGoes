@@ -17,16 +17,13 @@ namespace IndividueleOpdrachtSE2
 
         public string Waarde { get; set; }
 
-        public Product Product { get; set; }
-
-        public Specificatie(int id, Specificatiesoort specificatieSoort, string naam, string omschrijving, string waarde, Product product)
+        public Specificatie(int id, Specificatiesoort specificatieSoort, string naam, string omschrijving, string waarde)
         {
             this.ID = id;
             this.SpecificatieSoort = specificatieSoort;
             this.Naam = naam;
             this.Omschrijving = omschrijving;
             this.Waarde = waarde;
-            this.Product = product;
         }
     }
 }

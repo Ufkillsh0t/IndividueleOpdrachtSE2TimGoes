@@ -13,6 +13,12 @@ namespace IndividueleOpdrachtSE2
 
         public string Naam { get; set; }
 
+        public Specificatiesoort(int id, string naam)
+        {
+            this.ID = id;
+            this.Naam = naam;
+        }
+
         public Specificatiesoort(int id, Productgroep productGroep, string naam)
         {
             this.ID = id;

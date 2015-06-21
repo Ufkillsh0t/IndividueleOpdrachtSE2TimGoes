@@ -439,5 +439,111 @@ namespace IndividueleOpdrachtSE2
                 Verbinding.Close();
             }
         }
+
+        public Product VerkrijgProduct(int productID)
+        {
+            try
+            {
+                string sql = "SELECT ID, PRODUCTGROEP_ID, EANCODE, CODE, NAAM, MERK, TESTDATUM, PLAATJE, FABRIKANTSITE FROM PRODUCT WHERE ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", productID);
+
+                OracleDataReader reader = VoerQueryUit(command);
+
+                int id = Convert.ToInt32(reader["ID"]);
+                Productgroep productGroep = VerkrijgProductProductGroep(Convert.ToInt32(reader["PRODUCTGROEP_ID"]));
+                string eancode = reader["EANCODE"].ToString();
+                string code = reader["CODE"].ToString();
+                string naam = reader["NAAM"].ToString();
+                string merk = reader["MERK"].ToString();
+                DateTime testDatum = Convert.ToDateTime(reader["TESTDATUM"]);
+                string plaatje = reader["PLAATJE"].ToString();
+                string fabrikantsite = reader["FABRIKANTSITE"].ToString();
+
+                Product prod = new Product(id, productGroep, eancode, code, naam, merk, testDatum, plaatje, fabrikantsite);
+
+                return prod;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        public Productgroep VerkrijgProductProductGroep(int productGroepID)
+        {
+            try
+            {
+                string sql = "SELECT ID, NAAM, PLAATJE FROM PRODUCTGROEP WHERE ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", productGroepID);
+
+                OracleDataReader reader = VoerQueryUit(command);
+
+                int id = Convert.ToInt32(reader["ID"]);
+                string naam = reader["NAAM"].ToString();
+                string plaatje = reader["PLAATJE"].ToString();
+
+                Productgroep productGroep = new Productgroep(id, naam, plaatje);
+                return productGroep;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Specificatie> VerkrijgSpecificaties(int productID)
+        {
+            try
+            {
+                string sql = "SELECT ss.ID AS SPECIFICATIESOORT_ID, ss.NAAM AS SPECIFICATIESOORT, s.ID AS SPECIFICATIE_ID, s.NAAM AS SPECIFICATIE, s.OMSCHRIJVING AS OMSCHRIJVING, ps.WAARDE AS WAARDE"
+                           + "FROM PRODUCT p, PRODUCTSPECIFICATIE ps"
+                           + "INNER JOIN SPECIFICATIE s"
+                           + "ON s.ID = ps.SPECIFICATIE_ID"
+                           + "INNER JOIN SPECIFICATIESOORT ss"
+                           + "ON ss.ID = s.SPECIFICATIESOORT_ID"
+                           + "WHERE ps.PRODUCT_ID = p.ID"
+                           + "AND p.ID = :ID;";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", productID);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Specificatie> specificaties = new List<Specificatie>();
+
+                while (reader.Read())
+                {
+                    int specificatiesoortID = Convert.ToInt32(reader["SPECIFICATIESOORT_ID"]);
+                    string specificatiesoort = reader["SPECIFICATIESOORT"].ToString();
+                    int specificatieID = Convert.ToInt32(reader["SPECIFICATIE_ID"]);
+                    string specificatie = reader["SPECIFICATIE"].ToString();
+                    string omschrijving = reader["OMSCHRIJVING"].ToString();
+                    string waarde = reader["WAARDE"].ToString();
+
+                    specificaties.Add(new Specificatie(specificatieID, new Specificatiesoort(specificatiesoortID, specificatiesoort), specificatie, omschrijving, waarde));
+                }
+
+                return specificaties;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
     }
 }
