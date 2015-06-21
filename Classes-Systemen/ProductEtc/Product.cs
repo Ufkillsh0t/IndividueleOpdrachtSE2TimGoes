@@ -15,6 +15,10 @@ namespace IndividueleOpdrachtSE2
 
         public string Code { get; set; }
 
+        //minprijs
+
+        //avgprijs
+
         public string Naam { get; set; }
 
         public string Merk { get; set; }

@@ -9,8 +9,6 @@ namespace IndividueleOpdrachtSE2
     {
         public int ID { get; set; }
 
-        public Afhaalpunt Afhaalpunt { get; set; }
-
         public string Dag { get; set; }
 
         public string Open { get; set; }

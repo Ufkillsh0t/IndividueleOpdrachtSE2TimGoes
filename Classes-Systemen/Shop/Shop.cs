@@ -9,13 +9,27 @@ namespace IndividueleOpdrachtSE2
     {
         public int ShopNR { get; set; }
 
-        public int Rating { get; set; }
-
-        public string KVK { get; set; }
-
         public string Naam { get; set; }
 
-        public List<Afhaalpunt> afhaalpunten { get; set; }
+        public string Website { get; set; }
+
+        public string Adress { get; set; }
+
+        public string Postcode { get; set; }
+
+        public string Plaats { get; set; }
+
+        public int KVK { get; set; }
+
+        public int Rating { get; set; }
+
+        public string AlgemeenEmail { get; set; }
+
+        public string AlgemeenTelefoonNR { get; set; }
+
+        public string Logo { get; set; }
+
+        public List<Afhaalpunt> Afhaalpunten { get; set; }
 
         public Shop(int shopNR, string naam, int rating)
         {
@@ -24,12 +38,20 @@ namespace IndividueleOpdrachtSE2
             this.Rating = rating;
         }
 
-        public Shop(int shopNR, string kvk, string naam, int rating)
+        public Shop(int nr, string naam, string website, string adress, string postcode, string plaats, int kvk, int rating, string algemeenEmail, string algemeenTelefoonNR, string logo, List<Afhaalpunt> afhaalpunten)
         {
-            this.ShopNR = shopNR;
-            this.KVK = kvk;
+            this.ShopNR = nr;
             this.Naam = naam;
+            this.Website = website;
+            this.Adress = adress;
+            this.Postcode = postcode;
+            this.Plaats = plaats;
+            this.KVK = kvk;
             this.Rating = rating;
+            this.AlgemeenEmail = algemeenEmail;
+            this.AlgemeenTelefoonNR = algemeenTelefoonNR;
+            this.Logo = logo;
+            this.Afhaalpunten = afhaalpunten;
         }
     }
 }

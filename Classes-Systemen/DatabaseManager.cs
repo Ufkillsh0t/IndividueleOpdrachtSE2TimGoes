@@ -48,7 +48,10 @@ namespace IndividueleOpdrachtSE2
         {
             try
             {
-                Verbinding.Open();
+                if (Verbinding.State == ConnectionState.Closed)
+                {
+                    Verbinding.Open();
+                }
 
                 OracleDataReader reader = command.ExecuteReader();
 
@@ -585,6 +588,111 @@ namespace IndividueleOpdrachtSE2
             finally
             {
                 Verbinding.Close();
+            }
+        }
+
+
+        public Shop VerkrijgShop(int shopNR)
+        {
+            try
+            {
+                string sql = "SELECT NR, SHOPNAAM, WEBSITE, ADRESS, POSTCODE, PLAATS, KVK, RATING, ALGEMEENEMAIL, ALGEMEENTELEFOONNR, LOGO FROM SHOP WHERE NR = :NR";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":NR", shopNR);
+
+                OracleDataReader reader = VoerQueryUit(command);
+
+                int nr = Convert.ToInt32(reader["NR"]);
+                string shopNaam = reader["SHOPNAAM"].ToString();
+                string website = reader["WEBSITE"].ToString();
+                string adress = reader["ADRESS"].ToString();
+                string postcode = reader["POSTCODE"].ToString();
+                string plaats = reader["PLAATS"].ToString();
+                int kvk = Convert.ToInt32(reader["KVK"]);
+                int rating = Convert.ToInt32(reader["RATING"]);
+                string algemeenEmail = reader["ALGEMEENEMAIL"].ToString();
+                string algemeenTelefoonNR = reader["ALGEMEENTELEFOONNR"].ToString();
+                string logo = reader["LOGO"].ToString();
+
+                Shop shop = new Shop(nr, shopNaam, website, adress, postcode, plaats, kvk, rating, algemeenEmail, algemeenTelefoonNR, logo, VerkrijgAfhaalpunten(nr));
+
+                return shop;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        private List<Afhaalpunt> VerkrijgAfhaalpunten(int shopNR)
+        {
+            try
+            {
+                string sql = "SELECT ID, ADRESS, POSTCODE, PLAATS, TELEFOONNR, EMAIL FROM AFHAALPUNT WHERE SHOP_NR = :NR";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":NR", shopNR);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Afhaalpunt> afhaalpunten = new List<Afhaalpunt>();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string adress = reader["ADRESS"].ToString();
+                    string postcode = reader["POSTCODE"].ToString();
+                    string plaats = reader["PLAATS"].ToString();
+                    string telefoonNR = reader["TELEFOONNR"].ToString();
+                    string email = reader["EMAIL"].ToString();
+
+                    afhaalpunten.Add(new Afhaalpunt(id, adress, postcode, plaats, telefoonNR, email, VerkrijgOpeningstijden(id)));
+                }
+
+                return afhaalpunten;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private List<Openingstijd> VerkrijgOpeningstijden(int afhaalpuntID)
+        {
+            try
+            {
+                string sql = "SELECT ID, DAG, OPENINGSTIJD, SLUITINGSTIJD FROM OPENINGSTIJD WHERE AFHAALPUNT_ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", afhaalpuntID);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Openingstijd> openingstijden = new List<Openingstijd>();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string dag = reader["DAG"].ToString();
+                    string openingstijd = reader["OPENINGSTIJD"].ToString();
+                    string sluitingstijd = reader["SLUITINGSTIJD"].ToString();
+
+                    openingstijden.Add(new Openingstijd(id, dag, openingstijd, sluitingstijd));
+                }
+
+                return openingstijden;
+            }
+            catch
+            {
+                return null;
             }
         }
     }
