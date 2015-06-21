@@ -156,9 +156,10 @@
             border-radius: 10px;
             background-color: #00437D;
             height: 60px;
+            width: 1200px;
             margin-top: none;
-            margin-left: 20.1%;
-            margin-right: 19%; /* vanwege border radius 10 moet het 383 - 20 zijn.*/
+            margin-left: auto;
+            margin-right: auto; /* vanwege border radius 10 moet het 383 - 20 zijn.*/
             list-style-type: none;
         }
 
@@ -237,7 +238,7 @@
         <div id="nav">
             <ul>
                 <li><a href="Index.aspx">Home</a></li>
-                <li><a href="Product.aspx">Product</a></li>
+                <li><a href="ProductTab.aspx">Product</a></li>
                 <li><a href="Shop.aspx">Shop</a></li>
                 <li><a href="Wensenlijst.aspx">Wensenlijst</a></li>
             </ul>

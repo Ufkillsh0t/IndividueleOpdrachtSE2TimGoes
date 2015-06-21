@@ -27,6 +27,14 @@ namespace IndividueleOpdrachtSE2
 
         public List<Specificatie> Specificaties { get; set; }
 
+        public Product(int id, string naam, string merk, DateTime TestDatum)
+        {
+            this.ID = id;
+            this.Naam = naam;
+            this.Merk = merk;
+            this.TestDatum = TestDatum;
+        }
+
         public Product(int id, Productgroep productGroep, string EANcode, string code, string naam, string merk, DateTime TestDatum, string plaatje, string fabrikantSite)
         {
             this.ID = id;

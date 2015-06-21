@@ -307,5 +307,137 @@ namespace IndividueleOpdrachtSE2
                 Verbinding.Close();
             }
         }
+
+        public Productgroep VerkrijgProductGroep(int productGroepID)
+        {
+            try
+            {
+                string sql = "SELECT ID, CATEGORIE_ID, NAAM, PLAATJE FROM PRODUCTGROEP WHERE ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", productGroepID);
+
+                OracleDataReader reader = VoerQueryUit(command);
+
+                int id = Convert.ToInt32(reader["ID"]);
+                string naam = reader["NAAM"].ToString();
+                string plaatje = reader["PLAATJE"].ToString();
+                Categorie cat = VerkrijgCategorie(Convert.ToInt32(reader["CATEGORIE_ID"]));
+
+                Productgroep productGroep = new Productgroep(id, cat, naam, plaatje);
+                return productGroep;
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        public List<Specificatiesoort> VerkrijgSpecificatieSoorten(Productgroep productGroep)
+        {
+            try
+            {
+                string sql = "SELECT ID, NAAM FROM SPECIFICATIESOORT WHERE PRODUCTGROEP_ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", productGroep.ID);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Specificatiesoort> specificatieSoorten = new List<Specificatiesoort>();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string naam = reader["NAAM"].ToString();
+
+                    specificatieSoorten.Add(new Specificatiesoort(id, productGroep, naam));
+                }
+
+                return specificatieSoorten;
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+        public Categorie VerkrijgCategorie(int catID)
+        {
+            try
+            {
+                string sql = "SELECT ID, NAAM FROM CATEGORIE WHERE ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", catID);
+
+                OracleDataReader reader = VoerQueryUit(command);
+
+                int id = Convert.ToInt32(reader["ID"]);
+                string naam = reader["NAAM"].ToString();
+                Categorie cat = new Categorie(id, naam);
+
+                return cat;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
+
+        public List<Product> VekrijgProducten(int productGroepID)
+        {
+            try
+            {
+                string sql = "SELECT ID, NAAM, MERK, TESTDATUM FROM PRODUCT WHERE PRODUCTGROEP_ID = :ID";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ID", productGroepID);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Product> producten = new List<Product>();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader["ID"]);
+                    string naam = reader["NAAM"].ToString();
+                    string merk = reader["MERK"].ToString();
+                    DateTime testDatum = Convert.ToDateTime(reader["TESTDATUM"]);
+
+                    producten.Add(new Product(id, naam, merk, testDatum));
+                }
+
+                return producten;
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
     }
 }

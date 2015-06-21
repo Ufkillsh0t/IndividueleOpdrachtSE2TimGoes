@@ -26,13 +26,19 @@ namespace IndividueleOpdrachtSE2
             this.Plaatje = plaatje;
         }
 
-        public Productgroep(int id, Categorie categorie, string naam, string plaatje, List<Specificatiesoort> specificatieSoorten)
+        public Productgroep(int id, Categorie categorie, string naam, string plaatje)
         {
             this.ID = id;
             this.Categorie = categorie;
             this.Naam = naam;
             this.Plaatje = plaatje;
-            this.Specificatiesoorten = specificatieSoorten;
+            this.Specificatiesoorten = VerkrijgSpecificatieSoorten();
+        }
+
+        private List<Specificatiesoort> VerkrijgSpecificatieSoorten()
+        {
+            DatabaseManager dm = new DatabaseManager();
+            return dm.VerkrijgSpecificatieSoorten(this);
         }
 
     }

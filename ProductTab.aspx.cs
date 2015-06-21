@@ -58,7 +58,9 @@ namespace IndividueleOpdrachtSE2
         {
             foreach (Productgroep p in producGroepen)
             {
-                menu.ChildItems.Add(new MenuItem(p.Naam));
+                MenuItem productGroep = new MenuItem(p.Naam);
+                productGroep.NavigateUrl = "ProductGroep.aspx?id=" + p.ID.ToString();
+                menu.ChildItems.Add(productGroep);
             }
             return menu;
         }
