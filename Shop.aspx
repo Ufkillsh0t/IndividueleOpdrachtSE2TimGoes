@@ -10,6 +10,10 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div id="ShopTab" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
+        <asp:HyperLink ID="hlkShopTab" runat="server" NavigateUrl="ShopTab.aspx">ShopTab</asp:HyperLink>
+    </div>
+
     <div id="ShopInformatie" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
     </div>
 

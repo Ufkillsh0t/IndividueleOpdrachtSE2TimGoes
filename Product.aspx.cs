@@ -82,8 +82,8 @@ namespace IndividueleOpdrachtSE2
                 html = html + "<tr><td>" + ps.Shop.Naam + "</td>";
                 html = html + "<td>" + ps.Shop.Rating + "</td>";
                 html = html + "<td>" + ps.Voorraad + "</td>";
-                html = html + "<td>" + ps.Prijs + "</td>";
-                html = html + "<td>" + ps.TotaalPrijs + "</td>";
+                html = html + "<td>" + Convert.ToDecimal((ps.Prijs / 100)).ToString("c") + "</td>";
+                html = html + "<td>" + Convert.ToDecimal((ps.TotaalPrijs / 100)).ToString("c") + "</td>";
                 html = html + "<td><a href=\"Shop.aspx?nr=" + ps.Shop.ShopNR + "\">" + ps.Shop.ShopNR +  "</a></td></tr>";
             }
 

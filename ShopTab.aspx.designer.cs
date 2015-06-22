@@ -10,42 +10,33 @@
 namespace IndividueleOpdrachtSE2 {
     
     
-    public partial class WebForm5 {
+    public partial class WebForm9 {
         
         /// <summary>
-        /// ShopTab control.
+        /// testDiv1203 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ShopTab;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testDiv1203;
         
         /// <summary>
-        /// hlkShopTab control.
+        /// Shops control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlkShopTab;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Shops;
         
         /// <summary>
-        /// ShopInformatie control.
+        /// lvwShops control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ShopInformatie;
-        
-        /// <summary>
-        /// AfhaalpuntInformatie control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AfhaalpuntInformatie;
+        protected global::System.Web.UI.WebControls.ListView lvwShops;
     }
 }

@@ -592,6 +592,39 @@ namespace IndividueleOpdrachtSE2
         }
 
 
+        public List<Shop> VerkrijgAlleShops()
+        {
+            try
+            {
+                string sql = "SELECT WEBSITE, SHOPNAAM, RATING, NR FROM SHOP";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Shop> shops = new List<Shop>();
+
+                while (reader.Read())
+                {
+                    string website = reader["WEBSITE"].ToString();
+                    string shopNaam = reader["SHOPNAAM"].ToString();
+                    int rating = Convert.ToInt32(reader["RATING"]);
+                    int nr = Convert.ToInt32(reader["NR"]);
+                    shops.Add(new Shop(website, shopNaam, rating, nr));
+                }
+
+                return shops;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Verbinding.Close();
+            }
+        }
+
         public Shop VerkrijgShop(int shopNR)
         {
             try

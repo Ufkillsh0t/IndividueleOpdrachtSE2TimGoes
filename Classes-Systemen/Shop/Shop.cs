@@ -38,6 +38,14 @@ namespace IndividueleOpdrachtSE2
             this.Rating = rating;
         }
 
+        public Shop(string website, string naam, int rating, int shopNR)
+        {
+            this.Website = website;
+            this.Naam = naam;
+            this.Rating = rating;
+            this.ShopNR = shopNR;
+        }
+
         public Shop(int nr, string naam, string website, string adress, string postcode, string plaats, int kvk, int rating, string algemeenEmail, string algemeenTelefoonNR, string logo, List<Afhaalpunt> afhaalpunten)
         {
             this.ShopNR = nr;

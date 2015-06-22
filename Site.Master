@@ -239,7 +239,7 @@
             <ul>
                 <li><a href="Index.aspx">Home</a></li>
                 <li><a href="ProductTab.aspx">Product</a></li>
-                <li><a href="Shop.aspx">Shop</a></li>
+                <li><a href="ShopTab.aspx">Shop</a></li>
                 <li><a href="Wensenlijst.aspx">Wensenlijst</a></li>
             </ul>
         </div>
