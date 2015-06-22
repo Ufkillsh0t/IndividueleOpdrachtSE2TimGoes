@@ -12,16 +12,18 @@ namespace IndividueleOpdrachtSE2
         private Product prod;
         private List<Specificatiesoort> specificatieSoorten;
         private List<ProductShop> productShop;
+        private Productsysteem ps;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             string productID = Request.QueryString["id"];
+            ps = new Productsysteem();
             if (productID != null)
             {
                 ProductSpecificaties.Visible = false;
                 ProductPrijsShops.Visible = false;
-                prod = VerkijgProduct(Convert.ToInt32(productID));
-                productShop = VerkrijgProductShops(prod);
+                prod = ps.VerkijgProduct(Convert.ToInt32(productID));
+                productShop = ps.VerkrijgProductShops(prod);
                 ProductTabs.InnerHtml = "<a href=\"ProductTab.aspx\">ProductTab</a>" + "<a href=\"ProductGroep.aspx?id=" + prod.ProductGroep.ID.ToString() + "\" style=\"margin-left:20px;\">" + prod.ProductGroep.Naam + "</a>";
                 GenereerAlgemeneProductInformatie();
                 GenereerTabelSpecificaties();
@@ -44,18 +46,6 @@ namespace IndividueleOpdrachtSE2
         {
             ProductSpecificaties.Visible = true;
             ProductPrijsShops.Visible = false;
-        }
-
-        private Product VerkijgProduct(int productID)
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgProduct(productID);
-        }
-
-        private List<ProductShop> VerkrijgProductShops(Product p)
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgProductShops(p);
         }
 
         private void GenereerProductShopTabel()
@@ -111,7 +101,7 @@ namespace IndividueleOpdrachtSE2
         {
             if (prod.Specificaties != null && prod.Specificaties.Count != 0)
             {
-                specificatieSoorten = VerkrijgSpecificatieSoorten();
+                specificatieSoorten = ps.VerkrijgSpecificatieSoorten(prod);
 
                 string innerHTML = "<div id=\"ProductSpecificaties\" style=\"overflow:auto;\">";
 
@@ -141,16 +131,19 @@ namespace IndividueleOpdrachtSE2
             //table rijen en kolommen met de specificataties
             foreach (Specificatie s in prod.Specificaties)
             {
-                html = html + "<tr>";
-                html = html + "<td>" + s.Naam + "</td>";
-                html = html + "<td>" + s.Waarde +"</td>";
-                html = html + "<td>";
-                if (s.Omschrijving != null && s.Omschrijving != "")
+                if (s.SpecificatieSoort.Naam == specSoort.Naam)
                 {
-                    html = html + "<b>" + s.Naam + ":</b>" + s.Omschrijving;
+                    html = html + "<tr>";
+                    html = html + "<td>" + s.Naam + "</td>";
+                    html = html + "<td>" + s.Waarde + "</td>";
+                    html = html + "<td>";
+                    if (s.Omschrijving != null && s.Omschrijving != "")
+                    {
+                        html = html + "<b>" + s.Naam + ":</b>" + s.Omschrijving;
+                    }
+                    html = html + "</td>";
+                    html = html + "</tr>";
                 }
-                html = html + "</td>";
-                html = html + "</tr>";
             }
             html = html + "</table></div>";
 
@@ -165,26 +158,6 @@ namespace IndividueleOpdrachtSE2
                 generated = generated + "<br />" + "<B>" + s.Naam + "</B>";
             }
             return generated;
-        }
-
-        private List<Specificatiesoort> VerkrijgSpecificatieSoorten()
-        {
-            List<Specificatiesoort> specSoort = new List<Specificatiesoort>();
-
-            foreach (Specificatie s in prod.Specificaties)
-            {
-                bool found = false;
-                foreach (Specificatiesoort ss in specSoort)
-                {
-                    if (ss.Naam == s.SpecificatieSoort.Naam)
-                    {
-                        found = true;
-                    }
-                }
-
-                if (!found) specSoort.Add(s.SpecificatieSoort);
-            }
-            return specSoort;
         }
     }
 }

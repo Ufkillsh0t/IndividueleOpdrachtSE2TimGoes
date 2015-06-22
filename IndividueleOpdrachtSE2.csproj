@@ -92,6 +92,8 @@
     <Compile Include="Classes-Systemen\ProductEtc\ProductShop.cs" />
     <Compile Include="Classes-Systemen\ProductEtc\Specificatie.cs" />
     <Compile Include="Classes-Systemen\ProductEtc\Specificatiesoort.cs" />
+    <Compile Include="Classes-Systemen\Productsysteem.cs" />
+    <Compile Include="Classes-Systemen\ShopSysteem.cs" />
     <Compile Include="Classes-Systemen\Shop\Afhaalpunt.cs" />
     <Compile Include="Classes-Systemen\Shop\Openingstijd.cs" />
     <Compile Include="Classes-Systemen\Shop\Shop.cs" />

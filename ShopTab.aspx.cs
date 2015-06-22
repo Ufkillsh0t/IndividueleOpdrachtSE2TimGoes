@@ -10,10 +10,13 @@ namespace IndividueleOpdrachtSE2
     public partial class WebForm9 : System.Web.UI.Page
     {
         private List<Shop> shops;
+        private ShopSysteem ss;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            shops = VerkrijgAlleShops();
+            ss = new ShopSysteem();
+
+            shops = ss.VerkrijgAlleShops();
 
             if (shops != null && shops.Count != 0)
             {
@@ -25,12 +28,6 @@ namespace IndividueleOpdrachtSE2
             {
                 divShopInformatie.InnerHtml = "<h2>Er zijn geen shops gevonden! Probeer het overnieuw bij het shops tab!</h2>";
             }
-        }
-
-        private List<Shop> VerkrijgAlleShops()
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgAlleShops();
         }
     }
 }

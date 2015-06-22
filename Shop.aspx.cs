@@ -10,12 +10,15 @@ namespace IndividueleOpdrachtSE2
     public partial class WebForm5 : System.Web.UI.Page
     {
         private Shop shop;
+        private ShopSysteem ss;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string nr = Request.QueryString["nr"];
+            ss = new ShopSysteem();
             if (nr != null)
             {
-                shop = VerkrijgShop(Convert.ToInt32(nr));
+                shop = ss.VerkrijgShop(Convert.ToInt32(nr));
                 if (shop != null)
                 {
                     GenereerAlgemeneShopInformatie();
@@ -102,12 +105,6 @@ namespace IndividueleOpdrachtSE2
             html = html + "</table></div>"; //</td></tr>
 
             return html;
-        }
-
-        private Shop VerkrijgShop(int shopNR)
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgShop(shopNR);
         }
     }
 }

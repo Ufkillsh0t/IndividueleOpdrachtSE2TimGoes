@@ -11,14 +11,15 @@ namespace IndividueleOpdrachtSE2
     {
         private List<Categorie> hoofdCategorieen;
         private List<MenuItem> hoofdMenuItems;
-
+        private Productsysteem ps;
 
         private string[] child = new string[5] { "ChildChild1", "ChildChild2", "ChildChild3", "ChildChild4", "ChildChild5" };
         protected void Page_Load(object sender, EventArgs e)
         {
+            ps = new Productsysteem();
             if (!IsPostBack)
             {
-                hoofdCategorieen = VerkrijgHoofdCats();
+                hoofdCategorieen = ps.VerkrijgHoofdCats();
                 VulHoofdMenuItems();
 
                 foreach (MenuItem m in hoofdMenuItems)
@@ -37,7 +38,7 @@ namespace IndividueleOpdrachtSE2
                 {
                     if (c != null)
                     {
-                        MenuItem menuCat = ChildsMenuItems(VerkrijgSubCats(c), new MenuItem(c.Naam));
+                        MenuItem menuCat = ChildsMenuItems(ps.VerkrijgSubCats(c), new MenuItem(c.Naam));
                         hoofdMenuItems.Add(menuCat);
                     }
                 }
@@ -48,7 +49,7 @@ namespace IndividueleOpdrachtSE2
         {
             foreach (Categorie c in cats)
             {
-                MenuItem subCat = ProductGroepMenuItems(VerkrijgProductGroepen(c), new MenuItem(c.Naam));
+                MenuItem subCat = ProductGroepMenuItems(ps.VerkrijgProductGroepen(c), new MenuItem(c.Naam));
                 menu.ChildItems.Add(subCat);
             }
             return menu;
@@ -63,24 +64,6 @@ namespace IndividueleOpdrachtSE2
                 menu.ChildItems.Add(productGroep);
             }
             return menu;
-        }
-
-        private List<Productgroep> VerkrijgProductGroepen(Categorie cat)
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgProductGroepen(cat);
-        }
-
-        private List<Categorie> VerkrijgSubCats(Categorie cat)
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgSubCategorieen(cat);
-        }
-
-        private List<Categorie> VerkrijgHoofdCats()
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgHoofdCategorieen();
         }
     }
 }
