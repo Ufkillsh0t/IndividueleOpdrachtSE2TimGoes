@@ -37,5 +37,13 @@ namespace IndividueleOpdrachtSE2
                 Response.Redirect("Login.aspx");
             }
         }
+
+        protected void btZoek_Click(object sender, EventArgs e)
+        {
+            if (tbZoekBalk.Text != "")
+            {
+                Response.Redirect("Zoek.aspx?zoek=" + tbZoekBalk.Text);
+            }
+        }
     }
 }

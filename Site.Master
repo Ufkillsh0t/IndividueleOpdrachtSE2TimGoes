@@ -232,10 +232,20 @@
 <body>
     <form id="form1" runat="server">
         <div id="Inlog">
-            <asp:Button ID="btLogInUit" runat="server" OnClick="btLogInUit_Click" Text="Login" CausesValidation="False"/>
+            <asp:Button ID="btLogInUit" runat="server" OnClick="btLogInUit_Click" Text="Login" CausesValidation="False" />
             <asp:Label ID="lblGebruikersnaam" runat="server"></asp:Label>
         </div>
-        <div id="nav">
+
+        <div id="ZoekNav" runat="server" style="width: 600px; margin-left: auto; margin-right: auto;">
+            <div id="ZoekBalk" style="width: 500px; float: left;">
+                <asp:TextBox ID="tbZoekBalk" runat="server" Width="465px" Height="30px"></asp:TextBox>
+            </div>
+            <div id="ZoekKnop" style="width: 100px; float: left;">
+                <asp:Button ID="btZoek" runat="server" Text="Zoek" CausesValidation="false" OnClick="btZoek_Click"/>
+            </div>
+        </div>
+
+        <div id="nav" style="margin-top:50px;">
             <ul>
                 <li><a href="Index.aspx">Home</a></li>
                 <li><a href="ProductTab.aspx">Product</a></li>
@@ -245,9 +255,8 @@
         </div>
         <br />
         <div>
-            <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
-        
-            </asp:contentplaceholder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
         </div>
     </form>
 </body>

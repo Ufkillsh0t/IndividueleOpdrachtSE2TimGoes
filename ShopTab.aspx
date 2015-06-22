@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="testDiv1203" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
+    <div id="divShopInformatie" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
     </div>
 
-    <div id="Shops" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
+    <div id="divShops" runat="server" style="width: 1200px; margin-left: auto; margin-right: auto;">
         <asp:ListView ID="lvwShops" runat="server">
             <LayoutTemplate>
                 <table>

@@ -17,8 +17,13 @@ namespace IndividueleOpdrachtSE2
 
             if (shops != null && shops.Count != 0)
             {
+                divShopInformatie.InnerHtml = "<h2>Gevonden shops</h2>";
                 lvwShops.DataSource = shops;
                 lvwShops.DataBind();
+            }
+            else
+            {
+                divShopInformatie.InnerHtml = "<h2>Er zijn geen shops gevonden! Probeer het overnieuw bij het shops tab!</h2>";
             }
         }
 

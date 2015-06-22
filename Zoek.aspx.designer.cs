@@ -10,42 +10,60 @@
 namespace IndividueleOpdrachtSE2 {
     
     
-    public partial class WebForm1 {
+    public partial class WebForm10 {
         
         /// <summary>
-        /// Welkom control.
+        /// ProductZoekResultaten control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Welkom;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ProductZoekResultaten;
         
         /// <summary>
-        /// lblWelkom control.
+        /// divGevondenProducten control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWelkom;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGevondenProducten;
         
         /// <summary>
-        /// lblIndexGebruikersnaam control.
+        /// lvwProducten control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIndexGebruikersnaam;
+        protected global::System.Web.UI.WebControls.ListView lvwProducten;
         
         /// <summary>
-        /// Lorem control.
+        /// ShopZoekResultaten control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Lorem;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ShopZoekResultaten;
+        
+        /// <summary>
+        /// divGevondenShops control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGevondenShops;
+        
+        /// <summary>
+        /// lvwShops control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvwShops;
     }
 }

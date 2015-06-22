@@ -70,6 +70,7 @@
     <Content Include="ProductTab.aspx" />
     <Content Include="ProductGroep.aspx" />
     <Content Include="ShopTab.aspx" />
+    <Content Include="Zoek.aspx" />
     <Content Include="Wensenlijst.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -158,6 +159,13 @@
     </Compile>
     <Compile Include="ShopTab.aspx.designer.cs">
       <DependentUpon>ShopTab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Zoek.aspx.cs">
+      <DependentUpon>Zoek.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Zoek.aspx.designer.cs">
+      <DependentUpon>Zoek.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wensenlijst.aspx.cs">
       <DependentUpon>Wensenlijst.aspx</DependentUpon>

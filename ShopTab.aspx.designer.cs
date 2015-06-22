@@ -13,22 +13,22 @@ namespace IndividueleOpdrachtSE2 {
     public partial class WebForm9 {
         
         /// <summary>
-        /// testDiv1203 control.
+        /// divShopInformatie control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl testDiv1203;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divShopInformatie;
         
         /// <summary>
-        /// Shops control.
+        /// divShops control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Shops;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divShops;
         
         /// <summary>
         /// lvwShops control.

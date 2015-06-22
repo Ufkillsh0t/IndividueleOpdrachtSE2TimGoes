@@ -728,5 +728,69 @@ namespace IndividueleOpdrachtSE2
                 return null;
             }
         }
+
+        public List<Product> VerkrijgProducten(string zoekString)
+        {
+            try
+            {
+                string sql = "SELECT NAAM, MERK, TESTDATUM, ID FROM PRODUCT WHERE LOWER(NAAM) LIKE LOWER(:ZOEK) || '%'";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ZOEK", zoekString);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Product> producten = new List<Product>();
+
+                while (reader.Read())
+                {
+                    string naam = reader["NAAM"].ToString();
+                    string merk = reader["MERK"].ToString();
+                    DateTime testDatum = Convert.ToDateTime(reader["TESTDATUM"]);
+                    int id = Convert.ToInt32(reader["ID"]);
+
+                    producten.Add(new Product(id, naam, merk, testDatum));
+                }
+
+                return producten;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Shop> VerkrijgShops(string zoekString)
+        {
+            try
+            {
+                string sql = "SELECT WEBSITE, SHOPNAAM, RATING, NR FROM SHOP WHERE LOWER(SHOPNAAM) LIKE LOWER(:ZOEK) || '%'";
+
+                OracleCommand command = MaakOracleCommand(sql);
+
+                command.Parameters.Add(":ZOEK", zoekString);
+
+                OracleDataReader reader = VoerMultiQueryUit(command);
+
+                List<Shop> shops = new List<Shop>();
+
+                while (reader.Read())
+                {
+                    string website = reader["WEBSITE"].ToString();
+                    string naam = reader["SHOPNAAM"].ToString();
+                    int rating = Convert.ToInt32(reader["RATING"]);
+                    int nr = Convert.ToInt32(reader["NR"]);
+
+                    shops.Add(new Shop(website, naam, rating, nr));
+                }
+
+                return shops;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
