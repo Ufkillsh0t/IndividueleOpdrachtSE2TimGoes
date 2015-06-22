@@ -11,14 +11,15 @@ namespace IndividueleOpdrachtSE2
     {
         private List<Product> gevondenProducten;
         private List<Shop> gevondenShops;
-
+        private Zoeksysteem zoeksysteem;
         protected void Page_Load(object sender, EventArgs e)
         {
             string zoekString = Request.QueryString["zoek"];
             if (zoekString != null && zoekString != "")
             {
-                gevondenProducten = VerkrijgProducten(zoekString);
-                gevondenShops = VerkrijgShops(zoekString);
+                zoeksysteem = new Zoeksysteem();
+                gevondenProducten = zoeksysteem.VerkrijgProducten(zoekString);
+                gevondenShops = zoeksysteem.VerkrijgShops(zoekString);
 
                 if (gevondenProducten != null && gevondenProducten.Count != 0)
                 {
@@ -45,18 +46,6 @@ namespace IndividueleOpdrachtSE2
                 divGevondenProducten.InnerHtml = "<b>Geen zoekterm ingevuld!</b>";
                 divGevondenShops.InnerHtml = "<b>Geen zoekterm ingevuld!</b>";
             }
-        }
-
-        private List<Product> VerkrijgProducten(string zoekString)
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgProducten(zoekString);
-        }
-
-        private List<Shop> VerkrijgShops(string zoekString)
-        {
-            DatabaseManager dm = new DatabaseManager();
-            return dm.VerkrijgShops(zoekString);
         }
     }
 }
